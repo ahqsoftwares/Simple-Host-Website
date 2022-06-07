@@ -19,7 +19,7 @@ module.exports = async function (req, res) {
                                              guilds: null,
                                              connections: null
                                     }
-                                    await res.render("wait.ejs");
+                                    res.render("wait.ejs");
                                     user.info = await oauth.getUser(token);
                                     user.guilds = await oauth.getUserGuilds(token);
                                     user.connections = await oauth.getUserConnections(token);
