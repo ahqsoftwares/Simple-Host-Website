@@ -7,7 +7,7 @@ module.exports = async function (req, res) {
                                     clientId: "922145532716122132",
                                    clientSecret: process.env.secret,
                   
-                                    code: "query code",
+                                    code: req.query.code,
                                     scope: "identify email connections guilds.join guilds",
                                     grantType: "authorization_code",
                   
