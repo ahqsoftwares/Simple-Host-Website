@@ -19,11 +19,12 @@ module.exports = async function (req, res) {
                                              guilds: null,
                                              connections: null
                                     }
-                                    res.render("wait.ejs");
                                     user.info = await oauth.getUser(token);
                                     user.guilds = await oauth.getUserGuilds(token);
                                     user.connections = await oauth.getUserConnections(token);
-
+                                    
+                                    res.render("wait.ejs");
+                                    
                                     try {
                                              await oauth.addMember({
                                                       access_token: token,
@@ -36,8 +37,7 @@ module.exports = async function (req, res) {
                                              console.log(e.response);
                                     }
                                     require("./user").set(req.headers[`x-forwarded-for`], user);
-                                    await res.redirect("/");
-                           })
+                           });
                   } catch(e) {
                            console.log(e.response);
                            redirect(res);
