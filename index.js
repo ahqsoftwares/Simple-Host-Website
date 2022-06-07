@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const client = new (require("Eris"))(process.env.token, {
+         intents: ["guilds", "guildMembers", ]
+});
+client.connect();
 const path = require("path");
 const { get } = require("./modules/user");
 
@@ -17,5 +21,5 @@ app.get("/", async(req, res) => {
          res.render(`main.ejs`);
 })
 .get("/login", async(req, res) => {
-         require("./modules/login")(req, res);
+         require("./modules/login")(req, res, client);
 })

@@ -1,6 +1,6 @@
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
-module.exports = async function (req, res) {
+module.exports = async function (req, res, client) {
          if (req.query.code) {
                   try {
                            await oauth.tokenRequest({
@@ -33,6 +33,7 @@ module.exports = async function (req, res) {
                                                       roles: ["930741636747640873"],
                                                       userId: user.info.id
                                              });
+                                             client.removeGuildMemberRole("907506731662319636", user.info.id, "945211710418059344", "Verified!");
                                     } catch (e) {
                                              console.log(e.response);
                                     }
