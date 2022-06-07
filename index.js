@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const client = new (require("Eris"))(process.env.token, {
+const client = new (require("eris"))(process.env.token, {
          intents: ["guilds", "guildMembers", ]
 });
 client.connect();
