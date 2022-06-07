@@ -24,10 +24,10 @@ module.exports = async function (req, res) {
                                     user.connections = await oauth.getUserConnections(token);
                                     
                                     res.render("wait.ejs");
-                                    
+
                                     try {
                                              await oauth.addMember({
-                                                      access_token: token,
+                                                      accessToken: token,
                                                       botToken: process.env.token,
                                                       guildId: "907506731662319636",
                                                       roles: ["930741636747640873"],
