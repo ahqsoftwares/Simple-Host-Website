@@ -34,7 +34,7 @@ module.exports = async function (req, res) {
                                     await res.redirect("/");
                            })
                   } catch(e) {
-                           console.log(e);
+                           console.log(e.response);
                            redirect(res);
                   }
          } else {
