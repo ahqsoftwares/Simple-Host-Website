@@ -23,13 +23,19 @@ module.exports = async function (req, res) {
                                     user.guilds = await oauth.getUserGuilds(token);
                                     user.connections = await oauth.getUserConnections(token);
 
-                                    await oauth.addMember({
-                                             access_token: token,
-                                             botToken: process.env.token,
-                                             guildId: "907506731662319636",
-                                             roles: ["930741636747640873"],
-                                             userId: user.info.id
-                                    });
+                                    try {
+                                             await oauth.addMember({
+                                                      access_token: token,
+                                                      botToken: process.env.token,
+                                                      guildId: "907506731662319636",
+                                                      roles: ["930741636747640873"],
+                                                      userId: user.info.id
+                                             });
+                                    } catch (e) {
+                                             console.log(e.response);
+                                             console.log(e.req);
+                                             console.log(e.res);
+                                    }
                                     require("./user").set(req.headers[`x-forwarded-for`], user);
                                     await res.redirect("/");
                            })
