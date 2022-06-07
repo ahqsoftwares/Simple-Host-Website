@@ -4,7 +4,7 @@ module.exports = async function (req, res) {
          if (req.query.code) {
                   try {
                            await oauth.tokenRequest({
-                                    clientId: "332269999912132097",
+                                    clientId: "922145532716122132",
                                    clientSecret: process.env.secret,
                   
                                     code: "query code",
