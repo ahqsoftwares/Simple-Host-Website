@@ -19,9 +19,9 @@ app.use((req, res, next) => {
          req.guilds = null;
          req.third_party = null;
          try {
-                  req.user = get[req.headers[`x-forwarded-for`]].info;
-                  req.guilds = get[req.headers[`x-forwarded-for`]].guilds;
-                  req.third_party = get[req.headers[`x-forwarded-for`]].connections;
+                  req.user = get(req.headers[`x-forwarded-for`]).info;
+                  req.guilds = get(req.headers[`x-forwarded-for`]).guilds;
+                  req.third_party = get(req.headers[`x-forwarded-for`]).connections;
          } catch (e) {
                   console.log(e);
          }
