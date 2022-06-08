@@ -15,14 +15,15 @@ app.listen(1876);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "pages"));
 app.use((req, res, next) => {
+         req.user = null;
+         req.guilds = null;
+         req.third_party = null;
          try {
                   req.user = get[req.headers[`x-forwarded-for`]].info;
                   req.guilds = get[req.headers[`x-forwarded-for`]].guilds;
                   req.third_party = get[req.headers[`x-forwarded-for`]].connections;
          } catch (e) {
-                  req.user = null;
-                  req.guilds = null;
-                  req.third_party = null;
+                  console.log(e);
          }
          if (req.originalUrl != "/") {
                   next()
