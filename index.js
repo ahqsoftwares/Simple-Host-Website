@@ -39,4 +39,4 @@ app.get("/home", async(req, res) => {
 })
 .get("/login", async(req, res) => {
          require("./modules/login")(req, res, client);
-})
+});
