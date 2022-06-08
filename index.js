@@ -1,4 +1,6 @@
 const express = require("express");
+const process = require("process");
+process.on("uncaughtException", (e) => console.log(e));
 const app = express();
 const client = new (require("eris"))(process.env.token, {
          intents: ["guilds", "guildMembers", ]
@@ -26,14 +28,13 @@ app.use((req, res, next) => {
                   next()
          } else {
                   res.render("loading.ejs", {
-                           user: req.user,
-                           async: true
+                           user: req.user
                   });
          }
 });
 
 app.get("/home", async(req, res) => {
-         await res.render(`main.ejs`, {
+         res.render(`main.ejs`, {
                   user: req.user
          });
 })
