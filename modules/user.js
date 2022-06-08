@@ -15,6 +15,6 @@ module.exports = {
           * @returns 
           */
          get: function(ip) {
-                  return users[id] || null;
+                  return users[ip] || null;
          }
 }
