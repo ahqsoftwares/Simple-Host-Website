@@ -7,6 +7,7 @@ module.exports = {
           */
          set: function(ip, data) {
                   users[ip] = data;
+                  console.log(data.info);
          },
          /**
           * Get Ip from db
