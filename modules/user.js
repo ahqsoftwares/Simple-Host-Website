@@ -16,5 +16,14 @@ module.exports = {
           */
          get: function(ip) {
                   return users[ip] || null;
+         },
+         /**
+          * Destroy session
+          * @param {String} ip
+          * @returns {Boolean} Success
+          */
+         destroy: async function(ip) {
+                  delete users[ip];
+                  return true;
          }
 }

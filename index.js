@@ -7,7 +7,7 @@ const client = new (require("eris"))(process.env.token, {
 });
 client.connect();
 const path = require("path");
-const { get } = require("./modules/user");
+const { get, destroy } = require("./modules/user");
 
 console.log("Ready!");
 
@@ -41,4 +41,8 @@ app.get("/home", async(req, res) => {
 })
 .get("/login", async(req, res) => {
          require("./modules/login")(req, res, client);
+})
+.get("/logout", async(req, res) => {
+         await destroy(req.headers[`x-forwarded-for`]);
+         await res.redirect("/");
 });
